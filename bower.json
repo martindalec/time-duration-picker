@@ -1,8 +1,9 @@
 {
   "name": "time-duration-picker",
-  "homepage": "https://github.com/zp-j/time-duration-picker",
+  "homepage": "https://github.com/martindalec/time-duration-picker",
   "authors": [
-    "Zhipeng Jiang <jesusjzp@gmail.com>"
+    "Zhipeng Jiang <jesusjzp@gmail.com>",
+	"Chris Martindale <martindalec@live.com>"
   ],
   "description": "Plugin for selecting a time duration",
   "main": "src/timepicker.js",
