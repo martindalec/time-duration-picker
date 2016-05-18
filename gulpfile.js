@@ -14,7 +14,7 @@ gulp.task('clean', function (cb) {
     return del([distFolder + '**'], cb);
 });
 
-gulp.task('uglify', function() {
+gulp.task('minify-js', function() {
 	return gulp.src('src/*.js')
 	.pipe(uglify())
 	.pipe(rename({ suffix: '.min' }))
@@ -28,14 +28,8 @@ gulp.task('minify-css', function() {
 	.pipe(gulp.dest(distFolder));
 });
 
-gulp.task('rename', function() {
-	return gulp.src(distFolder + '**/*.*')
-	.pipe(rename({ suffix: '.min' }))
-	.pipe(gulp.dest(distFolder));
-});
-
 gulp.task('build', function (callback) {
-    runSequence('clean', 'uglify', 'minify-css', callback);
+    runSequence('clean', 'minify-js', 'minify-css', callback);
 });
 
 gulp.task('default', function () {
