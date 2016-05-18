@@ -7,7 +7,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="//code.angularjs.org/1.2.0-rc.2/angular.js"></script>
+  <script src="//code.angularjs.org/1.4.9/angular.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.9.0/ui-bootstrap.min.js"></script>
 
 
@@ -23,14 +23,9 @@
 </head>
 
 <body ng-app="myApp" ng-controller="RootCtrl">
-	<input
-		ez-timepicker       = "data"
-		show-meridian       = "false"
-		show-year           = "true"
-		show-month          = "true"
-		show-day            = "true"
-		data-inc-icon-class = "fa fa-chevron-up"
-		data-dec-icon-class = "fa fa-chevron-down"
+	<input ez-timepicker class="time-picker" type="text"
+		   inc-icon-class = "fa fa-chevron-up"
+		   dec-icon-class = "fa fa-chevron-down"
 	/>
 
 </body>
