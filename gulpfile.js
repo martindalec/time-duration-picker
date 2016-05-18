@@ -17,25 +17,25 @@ gulp.task('clean', function (cb) {
 gulp.task('uglify', function() {
 	return gulp.src('src/*.js')
 	.pipe(uglify())
+	.pipe(rename({ suffix: '.min' }))
 	.pipe(gulp.dest(distFolder));
 });
 
 gulp.task('minify-css', function() {
 	return gulp.src('src/*.css')
 	.pipe(minifyCss())
+	.pipe(rename({ suffix: '.min' }))
 	.pipe(gulp.dest(distFolder));
 });
 
 gulp.task('rename', function() {
-	return gulp.src(distFolder + '**', { base: distFolder })
-	.pipe(rename(function(path) {
-		path.suffix = '.min';
-	}))
+	return gulp.src(distFolder + '**/*.*')
+	.pipe(rename({ suffix: '.min' }))
 	.pipe(gulp.dest(distFolder));
 });
 
 gulp.task('build', function (callback) {
-    runSequence('clean', 'uglify', 'minify-css', 'rename', callback);
+    runSequence('clean', 'uglify', 'minify-css', callback);
 });
 
 gulp.task('default', function () {
