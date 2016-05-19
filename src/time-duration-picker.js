@@ -31,7 +31,7 @@ angular.module('ez.timepicker', [])
           // same as ezTimepicker: '=', but with another name
           time: '=ezTimepicker',
         },
-        link: function(scope, element, attrs, modelCtrl) {
+        link: function (scope, element, attrs, ngModel) {
           _scope = scope;
           _element = element;
           _attrs = attrs;
@@ -59,6 +59,21 @@ angular.module('ez.timepicker', [])
             minutesAsSeconds: 0,
             totalSeconds: 0
           };
+
+          ngModel.$render = function () {
+              scope.widget.totalSeconds = ngModel.$viewValue;
+              deconstructSeconds(ngModel.$viewValue);
+          };
+
+          function deconstructSeconds(totalSeconds) {
+              totalSeconds = Number(totalSeconds);
+              var totalSecondsToHours = Math.floor(totalSeconds / 3600);
+              var totalSecondsToMinutes = Math.floor(totalSeconds % 3600 / 60);
+              var totalSecondsToSeconds = Math.floor(totalSeconds % 3600 % 60);
+              scope.widget.hours = totalSecondsToHours;
+              scope.widget.minutes = totalSecondsToMinutes;
+              scope.widget.seconds = totalSecondsToSeconds;
+          }
 
           scope.preventDefault = function(e) {
             e.preventDefault();
@@ -252,7 +267,7 @@ angular.module('ez.timepicker', [])
               formatOutput();
               element.find('input').first().val(scope.time);
               var totalTime = (parseInt(scope.widget.hours, 10) * 60 * 60) + scope.widget.minutesAsSeconds + parseInt(scope.widget.seconds, 10);
-              modelCtrl.$setViewValue(totalTime);
+              ngModel.$setViewValue(totalTime);
             } else {
               setTime(scope.time);
             }
@@ -470,4 +485,3 @@ angular.module('ez.timepicker', [])
   );
 
 }]);
-
