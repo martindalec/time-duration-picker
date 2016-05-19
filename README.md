@@ -18,7 +18,7 @@ A duration time picker directive that allows a user to select a time via a dropd
 ## Usage
 
 ```html
-<script src="src/timepicker.js"></script>
+<script src="src/time-duration-picker.js"></script>
 ```
 
 ## Configuration
@@ -34,9 +34,9 @@ The following options can be set either through data attributes on the time inpu
   minuteStep          : 1,
   secondStep          : 1,
   meridians           : ['AM', 'PM'],
-  showYear            : 'true',
-  showMonth           : 'true',
-  showDay             : 'true',
+  showYear            : 'false',
+  showMonth           : 'false',
+  showDay             : 'false',
   showHour            : 'true',
   showMinute          : 'true',
   showSecond          : 'true',
@@ -51,14 +51,9 @@ The following options can be set either through data attributes on the time inpu
 
 ```html
 <body ng-app="myApp" ng-controller="RootCtrl">
-	<input
-		ez-timepicker       = "data"
-		show-meridian       = "false"
-		show-year           = "true"
-		show-month          = "true"
-		show-day            = "true"
-		data-inc-icon-class = "fa fa-chevron-up"
-		data-dec-icon-class = "fa fa-chevron-down"
+	<input ez-timepicker class="time-picker" type="text"
+		   inc-icon-class = "fa fa-chevron-up"
+		   dec-icon-class = "fa fa-chevron-down"
 	/>
 </body>
 ```
@@ -71,8 +66,8 @@ angular.module('myApp', ['ez.timepicker', 'ui.bootstrap'])
 ]);
 ```
 
-If the default time is not set, it will set current time as default time.
+Defaults to 00:00:00
 
 ## LICENSE
 
-MIT Lisece
+MIT License
