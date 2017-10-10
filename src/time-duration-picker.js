@@ -30,6 +30,7 @@ angular.module('ez.timepicker', [])
         scope: {
           // same as ezTimepicker: '=', but with another name
           time: '=ezTimepicker',
+          disabled: '=ngDisabled'
         },
         link: function (scope, element, attrs, ngModel) {
           _scope = scope;
@@ -434,6 +435,7 @@ angular.module('ez.timepicker', [])
 
   $templateCache.put('ez-timepicker.html',
     "<div class=\"dropdown ez-timepicker-container\" uib-dropdown>\n" +
+    " <div id=\"cover\" ng-show=\"disabled\"></div>\n" +
     "  <div class=\"dropdown-toggle\" ng-class=\"inputContainerClass\" uib-dropdown-toggle>\n" +
     "    <div class=\"time-input\" ng-transclude></div>\n" +
     "  </div>\n" +

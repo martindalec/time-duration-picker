@@ -74,3 +74,12 @@
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
+#cover {
+	position: absolute;
+	height: 100%;
+	width: 176px;
+	z-index: 1; /* make sure logout_box has a z-index of 2 */
+	background-color: #ddd;
+	opacity: 0.5;
+}
